@@ -1,8 +1,11 @@
 import React, { memo } from 'react'
+import HomeBanner from './c-cpns/home-banner'
 
 const Home = memo(() => {
   return (
-    <div>Home</div>
+    <div>
+      <HomeBanner/>
+    </div>
   )
 })
 
