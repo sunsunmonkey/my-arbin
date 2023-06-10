@@ -8,7 +8,6 @@ import SectionHeader from '@/components/section-header';
 import { HomeWrapper } from './style';
 import SectionRooms from '@/components/section-rooms';
 
-
 const Home = memo(() => {
   const { goodPriceInfo } = useSelector((state) => ({
     goodPriceInfo: state.home.goodPriceInfo
