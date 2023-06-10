@@ -26,7 +26,7 @@ export const RoomItemWrapper = styled.div`
   }
 
   .desc {
-    margin: 10px 0 5px;
+    margin: 13px 0 13px;
     font-size: 12px;
     font-weight: 700;
     color: ${props => props.verifyColor};
@@ -44,10 +44,11 @@ export const RoomItemWrapper = styled.div`
   }
 
   .price {
-    margin: 8px 0;
+    margin: 10px 0;
   }
 
   .bottom {
+    margin-top: 5px;
     display: flex;
     align-items: center;
     font-size: 12px;
