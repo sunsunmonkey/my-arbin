@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import HomeBanner from './c-cpns/home-banner'
 
 
@@ -10,8 +10,13 @@ import { HomeWrapper } from './style';
 import HomeSectionV1 from './c-cpns/home-section-v1';
 import SectionHeader from '@/components/section-header';
 import SectionRooms from '@/components/section-rooms';
+import SectionTabs from '@/components/section-tabs';
 
 const Home = memo(() => {
+
+  const [name, setName] = useState("成都");
+
+
   const { goodPriceInfo,  highscore, discount } = useSelector((state) => ({
     goodPriceInfo: state.home.goodPriceInfo,
     highscore: state.home.highscore,
@@ -23,6 +28,13 @@ const Home = memo(() => {
     dispatch(fetchGoodPriceInfo())
   }, [dispatch])
 
+  const tabNames = discount.dest_address?.map(item => item.name);
+
+  const tabClick = useCallback(function (index, name) {
+    setName(name)
+  }, [])
+
+
   return (
 
     <HomeWrapper>
@@ -30,7 +42,8 @@ const Home = memo(() => {
       <div className="content">
         <div className="discount">
           <SectionHeader title={discount.title} subtitle={discount.subtitle}/>
-          <SectionRooms list={discount.dest_list?.["成都"]}  listpercent="33.33333%" />
+          <SectionTabs tabNames={tabNames} tabClick={tabClick}/>
+          <SectionRooms list={discount.dest_list?.[name]}  listpercent="33.33333%" />
         </div>
 
           <HomeSectionV1  info = {goodPriceInfo}/>
