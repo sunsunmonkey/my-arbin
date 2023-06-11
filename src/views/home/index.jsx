@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useState } from 'react'
+import React, { memo, useEffect } from 'react'
 import HomeBanner from './c-cpns/home-banner'
 
 
@@ -8,19 +8,15 @@ import { fetchGoodPriceInfo } from '@/store/modules/home';
 import { HomeWrapper } from './style';
 
 import HomeSectionV1 from './c-cpns/home-section-v1';
-import SectionHeader from '@/components/section-header';
-import SectionRooms from '@/components/section-rooms';
-import SectionTabs from '@/components/section-tabs';
+import HomeSectionV2 from './c-cpns/home-section-v2';
+import { isEmptyObj } from '@/utils/isEmptyObj';
 
 const Home = memo(() => {
-
-  const [name, setName] = useState("成都");
-
-
-  const { goodPriceInfo,  highscore, discount } = useSelector((state) => ({
+  const { goodPriceInfo, highscore, discount, recommenddest } = useSelector((state) => ({
     goodPriceInfo: state.home.goodPriceInfo,
     highscore: state.home.highscore,
-    discount : state.home.discount
+    discount: state.home.discount,
+    recommenddest: state.home.recommenddest
   }))
 
   const dispatch = useDispatch();
@@ -28,28 +24,19 @@ const Home = memo(() => {
     dispatch(fetchGoodPriceInfo())
   }, [dispatch])
 
-  const tabNames = discount.dest_address?.map(item => item.name);
-
-  const tabClick = useCallback(function (index, name) {
-    setName(name)
-  }, [])
-
-
   return (
 
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        <div className="discount">
-          <SectionHeader title={discount.title} subtitle={discount.subtitle}/>
-          <SectionTabs tabNames={tabNames} tabClick={tabClick}/>
-          <SectionRooms list={discount.dest_list?.[name]}  listpercent="33.33333%" />
-        </div>
 
-          <HomeSectionV1  info = {goodPriceInfo}/>
-          <HomeSectionV1  info = {highscore}/>
+        {isEmptyObj(discount) && <HomeSectionV2 info={discount} />}
+        {isEmptyObj(recommenddest) && <HomeSectionV2 info={recommenddest} />}
+        {isEmptyObj(goodPriceInfo) && <HomeSectionV1 info={goodPriceInfo} />}
+        {isEmptyObj(highscore) && <HomeSectionV1 info={highscore} />}
+
+
       </div>
-
     </HomeWrapper>
   )
 })

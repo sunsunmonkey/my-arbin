@@ -11,3 +11,7 @@ export function getHomeHighscore(){
 export function getHomeDiscount(){
     return ZzkRequest.get({url: "/home/discount"})
 }
+
+export function getHomeRecommenddest(){
+    return ZzkRequest.get({url: "home/hotrecommenddest"})
+}
