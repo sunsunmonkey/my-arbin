@@ -1,3 +1,3 @@
 export function isEmptyObj(obj) {
-    return Object.keys(obj).length
+    return !!Object.keys(obj).length
   }
