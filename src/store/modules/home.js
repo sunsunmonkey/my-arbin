@@ -1,4 +1,4 @@
-import { getHomeDiscount, getHomeGoodPriceData, getHomeHighscore, getHomeLongfor, getHomeRecommenddest } from "@/services/modules/home";
+import { getHomeDiscount, getHomeGoodPriceData, getHomeHighscore, getHomeLongfor, getHomePlusData, getHomeRecommenddest } from "@/services/modules/home";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
@@ -12,6 +12,8 @@ export const fetchGoodPriceInfo = createAsyncThunk("fetchdata", async (payload, 
   getHomeRecommenddest().then((res) => dispatch(chageHomerecommenddest(res)));
 
   getHomeLongfor().then((res) => dispatch(chageHomeLongfor(res)));
+
+  getHomePlusData().then((res) => dispatch(chageHomeplusData(res)));
 })
 
 const homeSlice = createSlice({
@@ -21,7 +23,8 @@ const homeSlice = createSlice({
     highscore: {},
     discount: {},
     recommenddest: {},
-    Longfor: {}
+    Longfor: {},
+    plusData:{}
   },
   reducers: {
     changeGoodPriceInfoAction(state, { payload }) {
@@ -38,6 +41,9 @@ const homeSlice = createSlice({
     },
     chageHomeLongfor(state, { payload }) {
       state.Longfor = payload
+    },
+    chageHomeplusData(state, { payload }) {
+      state.plusData = payload
     }
   }
 });
@@ -48,6 +54,8 @@ export const {
   , changeHomeDiscount
   , chageHomerecommenddest
   , chageHomeLongfor
+  , chageHomeplusData
+
 } = homeSlice.actions;
 
 

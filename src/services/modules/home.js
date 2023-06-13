@@ -19,3 +19,7 @@ export function getHomeRecommenddest(){
 export function getHomeLongfor(){
     return ZzkRequest.get({url: "home/longfor"})
 }
+
+export function  getHomePlusData(){
+    return ZzkRequest.get({url: "home/plus"})
+}

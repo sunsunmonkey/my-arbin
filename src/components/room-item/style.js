@@ -4,7 +4,7 @@ export const RoomItemWrapper = styled.div`
   box-sizing: border-box;
   width:${props=>props.listpercent};
   padding: 8px;
-
+  flex-shrink: 0;
   .inner {
     width: 100%;
   }

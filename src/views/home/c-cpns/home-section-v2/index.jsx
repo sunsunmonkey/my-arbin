@@ -4,6 +4,7 @@ import { HomeSectionV2Wrapper } from "./style"
 import SectionHeader from '@/components/section-header';
 import SectionRooms from '@/components/section-rooms';
 import SectionTabs from '@/components/section-tabs';
+import SectionFooter from '@/components/section-footer';
 
 
 const HomeSectionV2 = memo((props) => {
@@ -23,6 +24,7 @@ const HomeSectionV2 = memo((props) => {
             <SectionHeader title={discount.title} subtitle={discount.subtitle} />
                 <SectionTabs tabNames={tabNames} tabClick={tabClick} />
             <SectionRooms list={discount.dest_list?.[name]} listpercent="33.33333%" />
+            <SectionFooter name={name}/>
         </HomeSectionV2Wrapper>
     )
 })
