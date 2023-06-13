@@ -4,7 +4,7 @@ import { HomeSectionV2Wrapper } from "./style"
 import SectionHeader from '@/components/section-header';
 import SectionRooms from '@/components/section-rooms';
 import SectionTabs from '@/components/section-tabs';
-import ScrollView from '@/base-ui/scroll-view/scroll-view';
+
 
 const HomeSectionV2 = memo((props) => {
     const { info: discount } = props;
@@ -21,9 +21,7 @@ const HomeSectionV2 = memo((props) => {
     return (
         <HomeSectionV2Wrapper>
             <SectionHeader title={discount.title} subtitle={discount.subtitle} />
-            <ScrollView>
                 <SectionTabs tabNames={tabNames} tabClick={tabClick} />
-            </ScrollView>
             <SectionRooms list={discount.dest_list?.[name]} listpercent="33.33333%" />
         </HomeSectionV2Wrapper>
     )

@@ -1,12 +1,20 @@
 import styled from "styled-components";
 
-export const ScrollViewWrapper = styled.div`
-   position: relative;
-   padding: 8px 0;
-   .slot{
+
+export const ViewWrapper = styled.div`
+  position: relative;
+  padding: 8px 0;
+
+  .scroll {
     overflow: hidden;
-   }
-   .control {
+
+    .scroll-content {
+      display: flex;
+      transition: transform 250ms ease;
+    }
+  }
+
+  .control {
     position: absolute;
     z-index: 9;
     display: flex;
@@ -35,5 +43,4 @@ export const ScrollViewWrapper = styled.div`
       transform: translate(50%, -50%);
     }
   }
-  
 `

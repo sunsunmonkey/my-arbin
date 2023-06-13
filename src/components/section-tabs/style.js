@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const SectionTabsWrapper = styled.div`
-    display: flex;
-    transition:transform 300ms ease;
-    .item {
+
+export const TabsWrapper = styled.div`
+  .item {
     box-sizing: border-box;
     flex-basis: 120px;
     flex-shrink: 0;

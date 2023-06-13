@@ -1,34 +1,41 @@
-import React, { memo, useCallback, useState } from 'react'
-import {SectionTabsWrapper} from "./style"
+import ScrollView from '@/base-ui/scroll-view'
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import React, { memo, useState } from 'react'
+import { TabsWrapper } from './style'
 
 const SectionTabs = memo((props) => {
+  const { tabNames = [], tabClick } = props
+  const [currentIndex, setCurrentIndex] = useState(0)
 
-const [currentIndex, setCurrentIndex] = useState(0)
-const {tabNames, tabClick} = props
-
- const itemClickHandle = useCallback((index, item) =>{
+  function itemClickHandle(index, item) {
     setCurrentIndex(index)
     tabClick(index, item)
-    // eslint-disable-next-line
-  },[])  
-
+  }
 
   return (
-    <SectionTabsWrapper >
-      {
-        tabNames?.map((item,index)=>{
+    <TabsWrapper>
+      <ScrollView>
+        {
+          tabNames.map((item, index) => {
             return (
-                <div 
+              <div
                 key={index}
                 className={classNames("item", { active: index === currentIndex })}
-                onClick={e=>{itemClickHandle(index,item)}}
-                >{item}</div>
+                onClick={e => itemClickHandle(index, item)}
+              >
+                {item}
+              </div>
             )
-        })
-      }
-    </SectionTabsWrapper>
+          })
+        }
+      </ScrollView>
+    </TabsWrapper>
   )
 })
+
+SectionTabs.propTypes = {
+  tabNames: PropTypes.array
+}
 
 export default SectionTabs

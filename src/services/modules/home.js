@@ -15,3 +15,7 @@ export function getHomeDiscount(){
 export function getHomeRecommenddest(){
     return ZzkRequest.get({url: "home/hotrecommenddest"})
 }
+
+export function getHomeLongfor(){
+    return ZzkRequest.get({url: "home/longfor"})
+}
