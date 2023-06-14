@@ -23,3 +23,4 @@ export function getHomeLongfor(){
 export function  getHomePlusData(){
     return ZzkRequest.get({url: "home/plus"})
 }
+
