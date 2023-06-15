@@ -1,3 +1,4 @@
+import Demo from "@/views/demo"
 import React from "react"
 import { Navigate } from "react-router-dom"
 
@@ -22,6 +23,10 @@ const routes = [
         path:"/detail",
         element:<Detail></Detail>
     },
+    {
+        path:"/demo",
+        element:<Demo></Demo>
+    }
 ]
 
 export default routes
