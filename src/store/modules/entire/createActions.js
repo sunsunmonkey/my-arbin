@@ -1,5 +1,5 @@
 import { getEntireRoomList } from "@/services/modules/entire";
-import { CHANGE_CURRENT_PAGE, CHANGE_ROOM_LIST, CHANGE_TOTAL_COUNT } from "./constants";
+import { CHANGE_CURRENT_PAGE, CHANGE_LOADING, CHANGE_ROOM_LIST, CHANGE_TOTAL_COUNT } from "./constants";
 
 export const changeCurrentPageAction = (currentPage) => ({
     type: CHANGE_CURRENT_PAGE,
@@ -16,10 +16,17 @@ export const changeTotalCount = (totalCount) => ({
     totalCount
 })
 
+export const changeLoading = (isLoading)=>({
+    type:CHANGE_LOADING,
+    isLoading
+})
+
 export const fetchRoomList = () => {
     return async (dispatch, getState) => {
         const currentPage = getState().entire.currentPage;
+        dispatch(changeLoading(true));
         const res = await getEntireRoomList(currentPage * 20);
+        dispatch(changeLoading(false));
         const roomList = res.list;
         const totalCount = res.totalCount;
 
