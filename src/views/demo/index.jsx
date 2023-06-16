@@ -1,21 +1,33 @@
 import Indicator from '@/base-ui/indicator'
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { DemoWrapper } from './style'
 
 const Demo = memo(() => {
-    const name = ["abc","abc1","abc2","ab8","ab2c","a2bc","ab8","ab2c","a2bc"]
+    const [selectIndex,setSelectIndex] = useState(0);
+
+    const name = ["111","222","333","444","555","666","777","888","999"]
+
+    function handleSelectIndex(isNext,photoLength){
+      let newIndex = isNext? selectIndex + 1 : selectIndex-1;
+      if(newIndex < 0) newIndex = photoLength.length -1
+      if(newIndex > photoLength.length -1) newIndex = 0
+
+      setSelectIndex(newIndex) 
+    }
+
+
   return (
     <DemoWrapper>
-           <div className='control'>
-        <button>上一个</button>
-        <button>下一个</button>        
-    </div>
+      <div className='control'>
+        <button onClick={e=>handleSelectIndex(false,name)}>上一个</button>
+        <button onClick={e=>handleSelectIndex(true,name)}>下一个</button>        
+     </div>
 
     <div className="list">
-    <Indicator>
+    <Indicator selectIndex={selectIndex}>
         {
-            name.map(item=>{
-                return <button>{item}</button>
+            name.map((item,index)=>{
+                return <button key={index}>{item}</button>
             })
         }
     </Indicator>

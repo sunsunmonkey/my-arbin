@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const IndicatorWrapper = styled.div`
-   display: flex;
-    overflow: hidden;
+   overflow: hidden;
    > *{
     flex-shrink: 0;
 
+   }
+   .i-content{
+      position: relative;
+      display: flex;
    }
 `
