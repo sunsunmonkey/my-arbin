@@ -1,5 +1,8 @@
-import React, { memo, useRef } from 'react'
+import React, { memo, useRef ,useState} from 'react'
+import classNames from 'classnames';
+
 import { RoomItemWrapper } from "./style"
+import Indicator from '@/base-ui/indicator'
 
 
 import Rating from '@mui/material/Rating';
@@ -8,15 +11,21 @@ import IconArrowLeft from '@/assets/svg/icon-arrow-left';
 import IconArrowRight from '@/assets/svg/icon-arrow-right';
 
 const RoomItem = memo((props) => {
+    const [selectIndex, setSelectIndex] = useState(0)
     const swiperRef =useRef();
 
     function controlClickHandle(isNext = true) {
         if (isNext) swiperRef.current.next()
         else swiperRef.current.prev()
+
+        let newIndex = isNext ? selectIndex + 1: selectIndex - 1
+        if (newIndex < 0) newIndex = itemData.picture_urls.length - 1
+        if (newIndex > itemData.picture_urls.length - 1) newIndex = 0
+        setSelectIndex(newIndex)
       }
       
       
-    const { item: itemData, listpercent = "25%" } = props
+    const { item: itemData , listpercent = "25%" } = props
     return (
         <RoomItemWrapper listpercent={listpercent}>
             <div className="inner">
@@ -33,6 +42,19 @@ const RoomItem = memo((props) => {
               <IconArrowRight width="24" height="24"/>
             </div>
         </div>
+        <div className='indicator'>
+            <Indicator selectIndex={selectIndex}>
+              {
+                itemData.picture_urls.map((item, index) => {
+                  return (
+                    <div className='item' key={item}>
+                      <span className={classNames("dot", {active: selectIndex === index})}></span>
+                    </div>
+                  )
+                })
+              }
+            </Indicator>
+          </div>
           <Carousel dots={false} ref={swiperRef}>
             {
               itemData.picture_urls.map((item, index) => {

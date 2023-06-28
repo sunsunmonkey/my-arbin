@@ -9,5 +9,6 @@ export const IndicatorWrapper = styled.div`
    .i-content{
       position: relative;
       display: flex;
+      transition: transform 200ms ease;
    }
 `
