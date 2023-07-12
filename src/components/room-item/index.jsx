@@ -25,9 +25,13 @@ const RoomItem = memo((props) => {
       }
       
       
-    const { item: itemData , listpercent = "25%" } = props
+    const { item: itemData , listpercent = "25%", itemClick } = props
+
+    function handleClick(){
+      if(itemClick) itemClick()
+    }
     return (
-        <RoomItemWrapper listpercent={listpercent}>
+        <RoomItemWrapper listpercent={listpercent} onClick={handleClick}>
             <div className="inner">
         {
           !itemData.picture_urls ? (<div className='cover'>
