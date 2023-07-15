@@ -50,7 +50,7 @@ const PictureBrowser = memo((props) => {
             mode='in-out' >
               <CSSTransition 
               classNames='pic'
-              timeout={50}
+              timeout={100}
               key={picture_urls[currentIndex]}
               >
                 

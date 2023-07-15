@@ -50,7 +50,7 @@ export const PictureBrowserWrapper = styled.div`
         height: 100%;
       }
     }
-    .picuture {
+    .picture{
       position: relative;
       height: 100%;
       overflow: hidden;
@@ -67,24 +67,15 @@ export const PictureBrowserWrapper = styled.div`
         height: 100%;
         user-select: none;
       }
-
-   }   
-   
-   }
-
-   .preview{
-      height: 100px;
-   }
-
-   .pic-enter{
+      .pic-enter{
       transform:translateX(${props=>props.isNext?"100%" : "-100%"});
       opacity: 0;
-   }
+   }  
 
    .pic-enter-active{
       transform:translateX(0);
       opacity: 1;
-      transition: all 50ms ease;
+      transition: all 100ms ease;
 
    }
 
@@ -94,7 +85,16 @@ export const PictureBrowserWrapper = styled.div`
 
    .pic-exit-active{
    opacity: 0;
-   transition: all 50ms ease;
+   transition: all 100ms ease;
    }
+    }   
+   
+   }
+
+   .preview{
+      height: 100px;
+   }
+
+ 
 
 `
