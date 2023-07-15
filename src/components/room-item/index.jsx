@@ -14,7 +14,7 @@ const RoomItem = memo((props) => {
     const [selectIndex, setSelectIndex] = useState(0)
     const swiperRef =useRef();
 
-    function controlClickHandle(isNext = true) {
+    function controlClickHandle(isNext = true,e) {
         if (isNext) swiperRef.current.next()
         else swiperRef.current.prev()
 
@@ -22,6 +22,8 @@ const RoomItem = memo((props) => {
         if (newIndex < 0) newIndex = itemData.picture_urls.length - 1
         if (newIndex > itemData.picture_urls.length - 1) newIndex = 0
         setSelectIndex(newIndex)
+        
+        e.stopPropagation() 
       }
       
       
@@ -39,10 +41,10 @@ const RoomItem = memo((props) => {
         </div> ):
         (<div className='slider'>
         <div className='control'>
-            <div className="btn left" onClick={e => controlClickHandle(false)}>
+            <div className="btn left" onClick={e => controlClickHandle(false,e)}>
               <IconArrowLeft width="24" height="24"/>
             </div>
-            <div className="btn right" onClick={e => controlClickHandle(true)}>
+            <div className="btn right" onClick={e => controlClickHandle(true,e)}>
               <IconArrowRight width="24" height="24"/>
             </div>
         </div>
