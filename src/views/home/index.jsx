@@ -12,6 +12,7 @@ import HomeSectionV2 from './c-cpns/home-section-v2';
 import { isEmptyObj } from '@/utils/isEmptyObj';
 import HomeLongfor from './c-cpns/home-longfor';
 import HomeSectionV3 from './c-cpns/home-section-v3';
+import { changeHeaderConfigAction } from '@/store/modules/main';
 
 const Home = memo(() => {
   const { goodPriceInfo, highscore, discount, recommenddest,Longfor,plusData} = useSelector((state) => ({
@@ -26,6 +27,7 @@ const Home = memo(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchGoodPriceInfo())
+    dispatch(changeHeaderConfigAction({ isFixed : true }))
   }, [dispatch])
 
   return (
