@@ -10,7 +10,7 @@ import { ThemeProvider } from 'styled-components'
 const AppHeader = memo(() => {
   const [isSearch,setIsSearch] = useState(false)
 
-
+  console.log(isSearch)
   const { headerConfig } =useSelector((state)=>({
     headerConfig:state.main.headerConfig
   }),shallowEqual)
@@ -26,9 +26,13 @@ const AppHeader = memo(() => {
 
   if (!isSearch) {
     preY.current = scrollY 
+    console.log('不在搜说')
   } 
-  if (Math.abs(preY.current - scrollY) > 30 && isSearch) setIsSearch(false)
-
+  if (Math.abs(preY.current - scrollY) > 30 && isSearch){
+    setIsSearch(false)
+    console.log('在搜说')
+  }
+ 
   return (
     <ThemeProvider theme={{isAlpha}}>
        <HeaderWrapper isAlpha={isAlpha} className={classNames({fixed: isFixed})}>
