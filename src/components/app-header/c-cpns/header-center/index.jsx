@@ -10,7 +10,6 @@ const HeaderCenter = memo((props) => {
     const { isSearch , searchBarClick} =props
     const [tabIndex,setTabIndex] = useState(0)
 
-
   function searchBarClickHandle(e){
     e.preventDefault() 
     searchBarClick?.()
@@ -38,12 +37,12 @@ const HeaderCenter = memo((props) => {
       timeout={250}
       unmountOnExit={true}
       >
-      <div className="searchBar" onClick={searchBarClickHandle}>
-              <input type="text" placeholder='搜索房源和体验'/>
-              <div className="searchIcon">
-                  <IconSearch/>
-              </div>
-          </div>
+       <div className='search-bar' onClick={e => searchBarClickHandle(e)}>
+          <div className='text'>搜索房源和体验</div>
+          <span className='icon'>
+            <IconSearch/>
+          </span>
+        </div>
       </CSSTransition>
           
       

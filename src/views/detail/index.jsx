@@ -9,7 +9,7 @@ const Detail = memo((props) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(changeHeaderConfigAction({  isFixed: false }))
+    dispatch(changeHeaderConfigAction({  isFixed: false ,topAlpha:false}))
   }, [dispatch])
 
   return (

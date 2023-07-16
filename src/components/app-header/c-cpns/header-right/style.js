@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderRightWrapper = styled.div`
+  color: ${props => props.theme.isAlpha ? "#fff": "#484848"};
   position: relative;
   flex: 1;
   display: flex;
@@ -11,7 +12,7 @@ export const HeaderRightWrapper = styled.div`
   .btns{
     display: flex;
     align-items: center;
-    color: #484848;
+    color: ${props => props.theme.isAlpha ? "#fff": "#484848"};
     margin-right: 2px;
     .btn{
        height: 42px;
@@ -21,7 +22,7 @@ export const HeaderRightWrapper = styled.div`
        border-radius: 22px;
        cursor: pointer;
        &:hover {
-        background-color: #f5f5f5;
+        background-color:${props => props.theme.isAlpha ? "#717171": " #f5f5f5"};
       }
       
     }

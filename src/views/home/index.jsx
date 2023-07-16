@@ -27,7 +27,7 @@ const Home = memo(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchGoodPriceInfo())
-    dispatch(changeHeaderConfigAction({ isFixed : true }))
+    dispatch(changeHeaderConfigAction({ isFixed : true ,topAlpha:true}))
   }, [dispatch])
 
   return (

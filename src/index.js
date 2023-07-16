@@ -22,6 +22,6 @@ root.render(
         </ThemeProvider>
         </Suspense>
       </Provider>
-  </React.StrictMode> 
+   </React.StrictMode>  
 );
 
